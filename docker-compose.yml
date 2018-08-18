@@ -1,0 +1,15 @@
+version: '2'
+services:
+  softether:
+    build: .
+    image: rpi-softether
+    volumes:
+      - vpn_server_config:/usr/local/vpnserver/vpn_server.config
+      - softether-logs:/var/log/vpnserver
+    network_mode: "host"
+    privileged: true 
+    cap_add:
+      - NET_ADMIN
+volumes:
+  vpn_server_config:
+  softether-logs:
